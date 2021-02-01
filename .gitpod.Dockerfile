@@ -8,7 +8,7 @@ ADD --chown=gitpod:gitpod https://github.com/roswell/roswell/releases/download/v
 
 USER root
 RUN apt-get update && \
-  apt-get -y install --no-install-recommends emacs sbcl && \
+#   apt-get -y install --no-install-recommends emacs sbcl && \
   dpkg -i /tmp/roswell.deb && \
   rm -rf /var/lib/apt/lists/*
 
@@ -16,11 +16,13 @@ USER gitpod
 RUN tar -xf /tmp/slime.tar.gz "--directory=${HOME}" && \
   mv "${HOME}/slime-${slime_version}" "${HOME}/slime" && \
   chown gitpod:gitpod -R ${HOME}/slime && \
-  rm -rf /tmp/slime.tar.gz  /tmp/roswell.deb && \
-  ros || echo
+  rm -rf /tmp/slime.tar.gz  /tmp/roswell.deb
+  # && \
+  # ros || echo
 
-RUN ros install sbcl
-RUN ros use sbcl
+RUN ros install sbcl/2.0.11
+
+RUN ros use sbcl/2.0.11
 RUN ros install ailisp/linedit
 RUN ros install ailisp/prepl
 RUN ros install ailisp/cl-lsp
