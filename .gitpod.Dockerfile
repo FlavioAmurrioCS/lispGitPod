@@ -17,4 +17,14 @@ RUN tar -xf /tmp/slime.tar.gz "--directory=${HOME}" && \
   mv "${HOME}/slime-${slime_version}" "${HOME}/slime" && \
   chown gitpod:gitpod -R ${HOME}/slime && \
   rm -rf /tmp/slime.tar.gz  /tmp/roswell.deb && \
-  ros || ros install cxxxr/lem cxxxr/cl-lsp
+  ros || echo
+
+RUN ros install sbcl
+RUN ros use sbcl
+RUN ros install ailisp/linedit
+RUN ros install ailisp/prepl
+RUN ros install ailisp/cl-lsp
+
+#   ros install cxxxr/lem cxxxr/cl-lsp
+
+ENV PATH="${HOME}/.roswell/bin:${PATH}"
