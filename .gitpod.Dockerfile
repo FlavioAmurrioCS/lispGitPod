@@ -2,7 +2,7 @@ FROM gitpod/workspace-full:latest
 
 ARG slime_version="2.26.1"
 
-COPY --chown=gitpod:gitpod ./.emacs ${HOME}/.emacs
+ADD --chown=gitpod:gitpod https://raw.githubusercontent.com/FlavioAmurrioCS/lispGitPod/main/.emacs ${HOME}/.emacs
 ADD --chown=gitpod:gitpod https://github.com/slime/slime/archive/v${slime_version}.tar.gz /tmp/slime.tar.gz
 ADD --chown=gitpod:gitpod https://github.com/roswell/roswell/releases/download/v19.08.10.101/roswell_19.08.10.101-1_amd64.deb /tmp/roswell.deb
 
