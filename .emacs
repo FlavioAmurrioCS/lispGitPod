@@ -13,7 +13,7 @@
 
 ;;; Tell EMACS and SLIME to use SBCL as the inferior lisp process
 ;;; when doing Lisp coding
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "~/.roswell/impls/x86-64/linux/sbcl-bin/2.0.11/bin/sbcl")
 
 ;;; [I like to do this] Set it up so that if you press KEYPAD ENTER
 ;;; (or shift-RETURN), Lisp expressions are automatically sent to the compiler.

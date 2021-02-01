@@ -25,4 +25,5 @@ RUN ros install ailisp/linedit && \
   ros install ailisp/prepl && \
   ros install ailisp/cl-lsp
 
-RUN echo 'export PATH="${PATH}:${HOME}/.roswell/bin"' >> /home/gitpod/.bashrc
+RUN echo 'export PATH="${PATH}:${HOME}/.roswell/bin"' >> /home/gitpod/.bashrc && \
+  { echo && echo "PS1='\[\e]0;\u \w\a\]\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> /home/gitpod/.bashrc
