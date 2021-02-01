@@ -25,4 +25,4 @@ RUN ros install ailisp/linedit && \
   ros install ailisp/prepl && \
   ros install ailisp/cl-lsp
 
-ENV PATH="/home/gitpod/.roswell/bin:${PATH}"
+RUN echo 'export PATH="${PATH}:${HOME}/.roswell/bin"' >> /home/gitpod/.bashrc
