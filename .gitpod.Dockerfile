@@ -1,20 +1,20 @@
 FROM gitpod/workspace-full:latest
 
+ARG slime_version="2.26.1"
+
+COPY --chown=gitpod:gitpod ./.emacs ${HOME}/.emacs
+ADD --chown=gitpod:gitpod https://github.com/slime/slime/archive/v${slime_version}.tar.gz /tmp/slime.tar.gz
+ADD --chown=gitpod:gitpod https://github.com/roswell/roswell/releases/download/v19.08.10.101/roswell_19.08.10.101-1_amd64.deb /tmp/roswell.deb
+
 USER root
-
-# installing texlive and utils
-# RUN apt-get update && \
-#   apt-get -y install --no-install-recommends pandoc texlive texlive-latex-extra texlive-extra-utils texlive-fonts-extra texlive-bibtex-extra biber latexmk make git procps locales curl && \
-#   rm -rf /var/lib/apt/lists/*
-
-# # generating locales
-# RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-#   dpkg-reconfigure --frontend=noninteractive locales && \
-#   update-locale LANG=en_US.UTF-8
-# ENV LANGUAGE=en_US.UTF-8 LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-
-# # installing cpanm & missing latexindent dependencies
-# RUN curl -L http://cpanmin.us | perl - --self-upgrade && \
-#   cpanm Log::Dispatch::File YAML::Tiny File::HomeDir
+RUN apt-get update && \
+  apt-get -y install --no-install-recommends emacs sbcl && \
+  dpkg -i /tmp/roswell.deb && \
+  rm -rf /var/lib/apt/lists/*
 
 USER gitpod
+RUN tar -xf /tmp/slime.tar.gz "--directory=${HOME}" && \
+  mv "${HOME}/slime-${slime_version}" "${HOME}/slime" && \
+  chown gitpod:gitpod -R ${HOME}/slime && \
+  rm -rf /tmp/slime.tar.gz  /tmp/roswell.deb && \
+  ros || ros install cxxxr/lem cxxxr/cl-lsp
