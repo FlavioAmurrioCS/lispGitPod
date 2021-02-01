@@ -10,7 +10,6 @@ RUN apt update && \
   rm -rf /var/lib/apt/lists/* /tmp/roswell.deb
 
 ARG slime_version="2.26.1"
-ENV PATH="/home/gitpod/.roswell/bin:${PATH}"
 
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
@@ -25,3 +24,5 @@ RUN tar -xf /tmp/slime.tar.gz "--directory=/home/gitpod" && \
 RUN ros install ailisp/linedit && \
   ros install ailisp/prepl && \
   ros install ailisp/cl-lsp
+
+ENV PATH="/home/gitpod/.roswell/bin:${PATH}"
