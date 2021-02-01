@@ -6,8 +6,8 @@ image:
 #     command: echo "Replace me with something that should run on every start, or just remove me entirely."
 vscode:
   extensions:
-    - coenraads.bracket-pair-colorizer-2@0.2.0:R8flOpw1fEZe6KyMNNNqBQ==
-    - mattn.lisp@0.1.11:JOnepRwXNL9ObTMem1BAVg==
     - ailisp.commonlisp-vscode@0.3.2:hLXby+pJfb14QsHyJCI0Ng==
     - coenraads.bracket-pair-colorizer@1.0.61:+jQByqALW0iXkhpd2yzYzQ==
     - ailisp.strict-paredit@0.3.1:g/5WNRJ3QV588GOKOx5PpA==
+    # - coenraads.bracket-pair-colorizer-2@0.2.0:R8flOpw1fEZe6KyMNNNqBQ==
+    # - mattn.lisp@0.1.11:JOnepRwXNL9ObTMem1BAVg==
